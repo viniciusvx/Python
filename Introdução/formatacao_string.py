@@ -4,9 +4,9 @@ método format() e a classe Template.'''
 
 from datetime import datetime #Biblioteca de tempo
 ano_atual = datetime.now().year #Metodo para obter o ano atual
-clube = "CORINTHIANS"
+clube = "FLAMENGO"
 campeonato_mundial = 1
-ano_fundacao = 1910
+ano_fundacao = 1895
 print(f"{clube} possui {campeonato_mundial} títulos mundiais." f" São {ano_atual - ano_fundacao} anos de existência.")
 
 print(f"Matricula: {1003:06d}") #:06d diz “Exiba um número inteiro com 6 dígitos. Se ele possuir menos de 6 dígitos,
