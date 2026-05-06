@@ -5,6 +5,11 @@ while True:
     print("MENU")
     res=int(input("1-media ponderada com peso 2 e 3\n 2-quadrado da soma dos 2 numeros\n 3-cubo do menor numero\n"))
     
+    if res<1 or res>3:
+        print("OPÇÃO INVÁLIDA!")
+        break
+    
+    
     if res == 1:
         media_ponderada=(((n1*2) + (n2*3))/ (2+3))
         print(f"A media ponderada com peso 2 e 3 é: {media_ponderada}")
