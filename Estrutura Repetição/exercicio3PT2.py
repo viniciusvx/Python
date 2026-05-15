@@ -9,7 +9,7 @@ O PROFESSOR LANÇA 4 NOTAS E NO FINAL IMPRIME O BOLETIM,LANÇOU 4 NOTAS IMPRIME'
 
 alunos = {}
 disciplinas = []
-
+notas = []
 while True:
 
     print("-" * 20)
@@ -33,6 +33,7 @@ while True:
 
             if idade < 0:
                 print("ERRO: idade inválida")
+                continue
 
             sexo = input("Qual é o sexo:[F][M]\n")
 
@@ -44,8 +45,9 @@ while True:
 
             else:
                 print("Sexo inválido")
+                continue
 
-            notas = []
+            
 
             for x in range(4):
 
@@ -54,6 +56,7 @@ while True:
 
                     if nota < 0 or nota > 10:
                         print("ERRO: nota inválida")
+                        continue
                     else:
                         notas.append(nota)
                         break
