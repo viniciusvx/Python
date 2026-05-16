@@ -1,95 +1,113 @@
-'''SISTEMA ESCOLAR
-CADASTRAR O ALUNO
-CADASTRAR DISCIPLINA
-IDADE
-SEXO
-TURMA
-O PROFESSOR LANÇA 4 NOTAS E NO FINAL IMPRIME O BOLETIM,LANÇOU 4 NOTAS IMPRIME'''
- 
+dic_alunos = {}
+media = 0
 
-alunos = {}
-disciplinas = []
-notas = []
 while True:
 
-    print("-" * 20)
-    print("=== MENU ===")
+    print("=" * 30)
+    print("-----MENU ESCOLAR-----")
+    print("=" * 30)
 
-    menu = int(input(
-        "1- CADASTRAR ALUNO\n"
-        "2- CADASTRAR DISCIPLINA\n"
-        "3- Ver relatorio\n"
-        "4- sair\n"
+    op = int(input(
+        "1-CADASTRAR ALUNO\n"
+        "2-NOTAS E DISCIPLINAS\n"
+        "3-BOLETIM\n"
+        "4-SAIR\n"
     ))
 
-    print("-" * 20)
+    while True:
 
-    if menu == 1:
+        if op == 1:
 
-        while True:
+            print("===CADASTRO===")
 
-            alunos1 = input("Informe o nome do aluno:\n ")
-            idade = int(input("Digite a idade do aluno:\n "))
+            nome = input("Informe o nome do aluno: ")
+            idade = int(input("Qual é a idade do aluno?: "))
 
             if idade < 0:
-                print("ERRO: idade inválida")
+                print("Idade inválida!")
                 continue
 
-            sexo = input("Qual é o sexo:[F][M]\n")
+            turma_validas = ["1","2","3","4","5","6","7","8","9","1°","2°","3°"]
 
-            if sexo.upper() == "F":
-                print("Sexo feminino")
+            turma = input("1 a 9 (FUNDAMENTAL) - 1° a 3° (MÉDIO): ")
 
-            elif sexo.upper() == "M":
-                print("Sexo masculino")
-
-            else:
-                print("Sexo inválido")
+            if turma not in turma_validas:
+                print("Turma inválida!")
                 continue
 
-            
+            genero = input("Qual é o genero do aluno:[F][M] ").upper()
 
-            for x in range(4):
+            if genero != "F" and genero != "M":
+                print("Gênero inválido!")
+                continue
 
-                while True:
-                    nota = float(input("Digite a nota do aluno:\n "))
-
-                    if nota < 0 or nota > 10:
-                        print("ERRO: nota inválida")
-                        continue
-                    else:
-                        notas.append(nota)
-                        break
-
-            alunos[alunos1] = {
-                "IDADE": idade,
-                "SEXO": sexo,
-                "NOTAS": notas
+            dic_alunos[nome] = {
+                "idade": idade,
+                "turma": turma,
+                "genero": genero,
+                "disciplinas": {}
             }
 
-            op = input("Deseja cadastrar novo aluno? [S][N]\n")
+            print("Aluno cadastrado!")
+            break
 
-            if op.upper() == "N":
+        if op == 2:
+
+            print("===NOTAS & DISCIPLINAS===")
+
+            aluno_cadastrado = input("Qual aluno deseja cadastrar notas?: ")
+
+            if aluno_cadastrado not in dic_alunos:
+                print("Aluno não encontrado!")
                 break
 
-    elif menu == 2:
+            while True:
 
-        while True:
+                dis = input("Qual é a disciplina?: ")
+                notas = []
 
-            dis = input("Informe a matéria que deseja cadastrar:\n ")
-            disciplinas.append(dis)
+                for x in range(4):
 
-            op = input("Deseja cadastrar nova matéria? [S][N]\n")
+                    nota = float(input(f"Digite a {x+1} nota de {dis}: "))
+                    notas.append(nota)
 
-            if op.upper() == "N":
+                dic_alunos[aluno_cadastrado]["disciplinas"][dis] = notas
+
+                op2 = input("Nova disciplina? [S][N] ").upper()
+
+                if op2 == "N":
+                    break
+
+            break
+
+        if op == 3:
+
+            aluno = input("Qual aluno deseja ver?: ")
+
+            if aluno not in dic_alunos:
+                print("Aluno não encontrado!")
                 break
 
-    elif menu == 3:
-        print("-" * 20)
-        print(alunos)
-        print(notas)
-        print(disciplinas)
-        print("-" * 20)
+            print("=" * 30)
+            print(f"Aluno: {aluno}")
 
-    elif menu == 4:
-        break
+            for disciplina, notas in dic_alunos[aluno]["disciplinas"].items(): # percorre cada disciplina e as notas do aluno
+
+                media = sum(notas) / 4
+
+                print("-" * 30)
+                print(f"Disciplina: {disciplina}")
+                print(f"Notas: {notas}")
+                print(f"Média: {media}")
+
+                if media >= 7:
+                    print("APROVADO")
+                else:
+                    print("REPROVADO")
+
+            break
+
+        if op == 4:
+
+            print("Saindo...")
+            exit()
