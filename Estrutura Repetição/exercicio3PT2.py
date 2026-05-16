@@ -1,5 +1,4 @@
 dic_alunos = {}
-media = 0
 
 while True:
 
@@ -14,100 +13,113 @@ while True:
         "4-SAIR\n"
     ))
 
-    while True:
+    # ================= CADASTRO =================
+    if op == 1:
 
-        if op == 1:
+        print("===CADASTRO===")
 
-            print("===CADASTRO===")
+        nome = input("Informe o nome do aluno: ")
+        idade = int(input("Qual é a idade do aluno?: "))
 
-            nome = input("Informe o nome do aluno: ")
-            idade = int(input("Qual é a idade do aluno?: "))
+        if idade < 0:
+            print("Idade inválida!")
+            continue
 
-            if idade < 0:
-                print("Idade inválida!")
-                continue
+        turma_validas = ["1","2","3","4","5","6","7","8","9","1°","2°","3°"]
 
-            turma_validas = ["1","2","3","4","5","6","7","8","9","1°","2°","3°"]
+        turma = input("1 a 9 (FUNDAMENTAL) - 1° a 3° (MÉDIO): ")
 
-            turma = input("1 a 9 (FUNDAMENTAL) - 1° a 3° (MÉDIO): ")
+        if turma not in turma_validas:# SE A TURMA QUE O USUARIO DIGITAR NÃO ESTIVER DENTRO DE TURMAS VALIDAS
+            print("Turma inválida!")
+            continue
 
-            if turma not in turma_validas:
-                print("Turma inválida!")
-                continue
+        genero = input("Qual é o genero do aluno:[F][M] ").upper()
 
-            genero = input("Qual é o genero do aluno:[F][M] ").upper()
+        if genero != "F" and genero != "M":# SE O GENERO DIGITADO FOR DIFERENTE DE(!=) F OU M
+            print("Gênero inválido!")
+            continue
 
-            if genero != "F" and genero != "M":
-                print("Gênero inválido!")
-                continue
+        dic_alunos[nome] = {   # AQUI ESTÁ SALVANDO AS INFORMAÇÕES [NOME DO ALUNO]
+            "idade": idade,    # IDADE : IDADE QUE O USUARIO DIGITOU
+            "turma": turma,    # TURMA: TURMA QUE O USUARIO DIGITOU
+            "genero": genero,  # GENERO: GENERO QUE O USUARIO DIGITOU
+            "disciplinas": {}  # DISCIPLINAS : ESTÁ VAZIA POIS QUANDO O USUARIO CADASTRAR VAI VIR PRA CÁ
+        }
 
-            dic_alunos[nome] = {
-                "idade": idade,
-                "turma": turma,
-                "genero": genero,
-                "disciplinas": {}
-            }
+        print("Aluno cadastrado!!!")
 
-            print("Aluno cadastrado!")
-            break
+    # ================= NOTAS =================
+    elif op == 2:
 
-        if op == 2:
+        print("===NOTAS & DISCIPLINAS===")
 
-            print("===NOTAS & DISCIPLINAS===")
+        aluno_cadastrado = input("Qual aluno deseja cadastrar notas?: ")
 
-            aluno_cadastrado = input("Qual aluno deseja cadastrar notas?: ")
+        if aluno_cadastrado not in dic_alunos: # SE O NOME DO ALUNO QUE ELE DIGITAR NÃO ESTIVER NO DICIONÁRIO
+            print("Aluno não encontrado!")
+            continue
 
-            if aluno_cadastrado not in dic_alunos:
-                print("Aluno não encontrado!")
-                break
+        while True:
 
-            while True:
+            dis = input("Qual é a disciplina?: ")
+            notas = []
 
-                dis = input("Qual é a disciplina?: ")
-                notas = []
-
-                for x in range(4):
-
-                    nota = float(input(f"Digite a {x+1} nota de {dis}: "))
+            for x in range(4): # SE EU COLOCASSE O WHILE EM CIMA, ELE NÃO IRIA PARAR O CODIGO QUANDO ESTIVESSE ERRADO
+                while True:
+                 nota = float(input(f"Digite a {x+1}° nota de {dis}: "))
+                 if nota<0 or nota >10:
+                    print("Nota inválida, digite novamente: ")
+                    continue
+                 else:
                     notas.append(nota)
 
-                dic_alunos[aluno_cadastrado]["disciplinas"][dis] = notas
+            dic_alunos[aluno_cadastrado]["disciplinas"][dis] = notas
+            #DIC_ALUNOS[VINI][DISCIPLINA][MATEMATICA] = 10,9,8,7
 
-                op2 = input("Nova disciplina? [S][N] ").upper()
+            op2 = input("Nova disciplina? [S][N] ").upper()
 
-                if op2 == "N":
-                    break
-
-            break
-
-        if op == 3:
-
-            aluno = input("Qual aluno deseja ver?: ")
-
-            if aluno not in dic_alunos:
-                print("Aluno não encontrado!")
+            if op2 == "N":
                 break
 
-            print("=" * 30)
-            print(f"Aluno: {aluno}")
+    # ================= BOLETIM =================
+    elif op == 3:
 
-            for disciplina, notas in dic_alunos[aluno]["disciplinas"].items(): # percorre cada disciplina e as notas do aluno
+        aluno = input("Qual aluno deseja ver?: ")
 
-                media = sum(notas) / 4
+        if aluno not in dic_alunos: # SE O ALUNO NÃO ESTIVER CADASTRADO NO DICIONÁRIO
+            print("Aluno não encontrado!")
+            continue
 
-                print("-" * 30)
-                print(f"Disciplina: {disciplina}")
-                print(f"Notas: {notas}")
-                print(f"Média: {media}")
+        print("=" * 30)
+        print(f"Aluno: {aluno}")
 
-                if media >= 7:
-                    print("APROVADO")
-                else:
-                    print("REPROVADO")
+        disciplinas = dic_alunos[aluno]["disciplinas"]
+        #Guarda as disciplinas do aluno numa variável chamada disciplinas
 
-            break
+        if not disciplinas:#SE NÃO TIVER NENHUMA DISCIPLINA CADASTRADA
+            print("Nenhuma disciplina cadastrada!")
+            continue
 
-        if op == 4:
+        for disciplina, notas in disciplinas.items():
+            #para cada matéria e suas notas, repita o código abaixo
+            media = sum(notas) / len(notas)
 
-            print("Saindo...")
-            exit()
+            print("-" * 30)
+            print(f"Disciplina: {disciplina}")
+            print(f"Notas: {notas}")
+            print(f"Média: {media:.1f}")
+
+            if media >= 7:
+                print("APROVADO")
+            else:
+                print("REPROVADO")
+
+    # ================= SAIR =================
+    elif op == 4:
+
+        print("Saindo...")
+        break
+
+    # ================= OPÇÃO INVÁLIDA =================
+    else:
+        print("Opção inválida!")
