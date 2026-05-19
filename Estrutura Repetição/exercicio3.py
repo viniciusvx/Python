@@ -124,3 +124,4 @@ while True:
     # ================= OPÇÃO INVÁLIDA =================
     else:
         print("Opção inválida!")
+        #não vai funcionar
