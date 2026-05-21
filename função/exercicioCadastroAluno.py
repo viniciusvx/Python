@@ -1,4 +1,5 @@
 def cadastrar_aluno():
+    
     aluno = {}
     
     

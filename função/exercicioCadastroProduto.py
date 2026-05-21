@@ -14,16 +14,20 @@
     '''
 
 def cadastrar_produto():# PARA EU VER TUDO ISSO ABAIXO EU TENHI QUE CHAMAR O NOME DA FUNÇÃO
-    produto={} #PARA VER O DIC, TEM QUE CHAMAR O NOME DO DICIONÁRIO
+    try:
+     produto={} #PARA VER O DIC, TEM QUE CHAMAR O NOME DO DICIONÁRIO
 
-    produto["nome"] = input("Informe o nome do produto: ")
-    produto["preço"]= float(input("Informe o valor desse produto: "))
-    produto["categoria"] =input("Informe a categoria do produto: ")
-    produto["quantidade"] = int(input("Informe a quantidade do produto: "))
+     produto["nome"] = input("Informe o nome do produto: ")
+     produto["preço"]= float(input("Informe o valor desse produto: "))
+     produto["categoria"] =input("Informe a categoria do produto: ")
+     produto["quantidade"] = int(input("Informe a quantidade do produto: "))
+     print("Cadastro realizado!!")
 
-    
-    
-    print("Cadastro realizado!!")
+    except ValueError:
+        print("ERRO.Quantidade e preço devem ser numericos")
+
+    finally:
+        print("Finalizado!!!")
     
     return produto
 

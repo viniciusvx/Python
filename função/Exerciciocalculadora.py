@@ -14,6 +14,7 @@ def divisao (a,b):
     return divisao
 
 def menu ():
+  try:
     print("CALCULADORA")
     print("1- SOMA")
     print("2- SUBTRAÇÃO")
@@ -22,7 +23,7 @@ def menu ():
     op = int(input("Informe a opção que deseja: "))
     a = float(input("Informe o 1° numero: "))
     b = float(input("Informe o 2° numero: "))
-
+  
     if op == 1:
      print(soma(a,b))
 
@@ -37,4 +38,6 @@ def menu ():
     
     else:
        print("Opcão incorreta")
+  except:
+    print("Dados incorretos!!")
 menu()
