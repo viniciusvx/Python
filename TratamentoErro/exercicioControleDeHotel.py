@@ -133,12 +133,12 @@ def menu():
                     hospedes.append(hospede)
 
             elif op == 2:
-                reserva = reserva_quarto(hospedes)
+                reserva = reserva_quarto(hospedes) #Precisa da lista de hóspedes porque: precisa procurar quem está fazendo a reserva
                 if reserva:
                     reservas.append(reserva)
 
             elif op == 3:
-                mostrar_relatorio(hospedes, reservas)
+                mostrar_relatorio(hospedes, reservas) #Precisa das duas listas porque: mostra hóspedes,mostra reservas
                 print("-" * 20)
 
             elif op == 4:

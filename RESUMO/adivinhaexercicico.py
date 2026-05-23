@@ -1,83 +1,38 @@
+import random
 
+print("-" * 10, "ADIVINHAR NUMERO", "-" * 10)
 
-def nivel_facil():
-  numero_desconhecido = 42
-  total_tentativa = 10
-  pontuacao = 100
-  for tentativa in range (1,total_tentativa + 1):
-    print(f"tentativa {tentativa} de {total_tentativa}")
+print("1 - Nivel 1")
+print("2 - Nivel 2")
+print("3 - Nivel 3")
 
+nivel = int(input("Escolha o nivel: "))
+if nivel == 1:
+    total_tentativa = 10
+elif nivel == 2:
+    total_tentativa = 5
+elif nivel == 3:
+    total_tentativa = 3
+else:
+    print("Nivel inválido!")
+    exit()
+
+numero_desconhecido = random.randint(1, 100)
+pontuacao = 100
+
+for tentativa in range(1, total_tentativa + 1):
+    print(f"Tentativa {tentativa} de {total_tentativa}")
     chute = int(input("Digite um numero: "))
-
-    acertou = chute == numero_desconhecido
-    maior = chute > numero_desconhecido
-    pontuacao = pontuacao - 10
-
-    if (acertou):
-        print("Parabéns!!Você acertou número")
-        break
-
-    elif (maior):
-        print("Voce errou! o numero que voce digitou é MAIOR")
-        print(f"sua pontuação é de: {pontuacao}")
-    else:
-        print("Voce errou! o numero que voce digitou é MENOR")
-        print(f"sua pontuação é de: {pontuacao}")
-    return nivel_facil
-
-def nivel_medio():
-   numero_desconhecido = 42
-   total_tentativa = 5
-   pontuacao = 100
-   for tentativa in range (1,total_tentativa + 1):
-    print(f"tentativa {tentativa} de {total_tentativa}")
-
-    chute = int(input("Digite um numero: "))
-
-    acertou = chute == numero_desconhecido
-    maior = chute > numero_desconhecido
-    pontuacao = pontuacao - 20
-
-    if (acertou):
-        print("Parabéns!!Você acertou número")
-        break
-
-    elif (maior):
-        print("Voce errou! o numero que voce digitou é MAIOR")
-        print(f"sua pontuação é de: {pontuacao}")
-    else:
-        print("Voce errou! o numero que voce digitou é MENOR")
-        print(f"sua pontuação é de: {pontuacao}")
-    return nivel_medio
-
-def nive_dificil():
-   numero_desconhecido = 42
-   total_tentativa = 3
-   pontuacao = 100
-   for tentativa in range (1,total_tentativa + 1):
-    print(f"tentativa {tentativa} de {total_tentativa}")
-
-    chute = int(input("Digite um numero: "))
-
-    acertou = chute == numero_desconhecido
-    maior = chute > numero_desconhecido
-    pontuacao = pontuacao - 30
-
-    if (acertou):
-        print("Parabéns!!Você acertou número")
-        break
-
-    elif (maior):
-        print("Voce errou! o numero que voce digitou é MAIOR")
-        print(f"sua pontuação é de: {pontuacao}")
-    else:
-        print("Voce errou! o numero que voce digitou é MENOR")
-        print(f"sua pontuação é de: {pontuacao}")
     
-   
-
-
-
-   
-
-    
+    if chute == numero_desconhecido:
+        print("Parabéns! Você acertou!")
+        print(f"Pontuação: {pontuacao}")
+        break
+    elif chute > numero_desconhecido:
+        print("O número secreto é MENOR.")
+    else:
+        print("O número secreto é MAIOR.")
+    pontuacao -= 10
+    print(f"Pontuação: {pontuacao}")
+else:
+    print(f"Você perdeu! O número era {numero_desconhecido}")
