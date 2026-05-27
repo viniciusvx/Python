@@ -251,46 +251,216 @@ def restricoes():
 def recomendacoes():
     try:
         while True:
-            genero = input("Digite o seu genero [F][M]: ").upper()
+            genero = input("Digite o seu genero [F][M]: ".upper()).upper()
 
             if genero != "F" and genero != "M":
                 print("Dados inválidos")
                 continue
 
             if genero == "F":
-                dias = int(input("Escreva há quantos dias você fez sua última doação: "))
-
-                if dias < 0:
-                    print("Dados incorretos!")
-                    break
-
-                if dias <= 90:
-                    print("Você deve aguardar até 90 dias para doar novamente")
-                    exit()
-
-                elif dias > 90:
-                    print("PODE REALIZAR A DOAÇÃO")
-                    exit()
+                dias = int(input("É a sua primeria doação? 1-sim 2-não: ".upper()))
+                
+                if dias == 2:
+                    dias = int(input("Escreva há quantos dias você fez sua última doação: ".upper()))
+                    if dias < 0:
+                        print("Dados incorretos!".upper())
+                        break
+                    if dias <= 90:
+                        print("Você deve aguardar até 90 dias para doar novamente".upper())
+                        exit()
+                    elif dias > 90:
+                        print("PODE REALIZAR A DOAÇÃO")
+                        exit()
+                
+                if dias == 1:
+                   print("Pode realizar a doação".upper())
+                   exit()
 
             elif genero == "M":
-                dias = int(input("Escreva há quantos dias você fez sua última doação: "))
-
-                if dias < 0:
-                    print("Dados incorretos!")
-                    break
-
-                if dias <= 60:
-                    print("Você deve aguardar até 60 dias para doar novamente")
-                    exit()
-
-                elif dias > 60:
+                dias = int(input("É a sua primeria doação? 1-sim 2-não: ".upper()))
+                
+                if dias == 2:
+                    dias = int(input("Escreva há quantos dias você fez sua última doação: ".upper()))
+                    if dias < 0:
+                        print("Dados incorretos!".upper())
+                        break
+                    if dias <60:
+                        print("Você deve aguardar até 60 dias para doar novamente".upper())
+                        exit()
+                    elif dias >=60:
+                        print("PODE REALIZAR A DOAÇÃO")
+                        exit()
+                if dias == 1:
                     print("PODE REALIZAR A DOAÇÃO")
                     exit()
-
     except ValueError:
         print("DADOS INVÁLIDOS")
         exit()
 
+def verificar_doaçao():
+    try:
+        while True:
+            print("===DEVE AGUARDAR PARA DOAR SANGUE===")
+
+            print("TRANSFUSÃO DE\nTATUAGEM\nMICROPIGMENTAÇÃO\nPIERCING\nTOMOU VACINA ANTIRRÁBICA/dT(após exposição/mordedura)")
+            print("PIERCING(oral e genital) após retirada, AMAMENTAÇÃO após data de parto")
+
+            op = int(input("VOCÊ REALIZOU ALGUMA DESSAS OPERAÇÕES? 1-sim 2-não: "))
+
+            if op != 1 and op != 2:
+                print("NUMERO INVÁLIDO")
+                break
+
+            if op == 1:
+                op = int(input("Você esperou o periodo de 1 ano? 1-sim 2-não: "))
+
+                if op != 1 and op != 2:
+                    print("NUMERO INVÁLIDO")
+                    continue
+
+                if op == 1:
+                    print("PODE REALIZAR A DOAÇÃO")
+
+                elif op == 2:
+                    print("VOCE NÃO PODE REALIZAR A DOAÇÃO")
+
+                exit()
+
+            print("=" * 50)
+
+            print("PROCEDIMENTOS ENDOSCÓPICOS(E PARCEIRO),DENGUE GRAVE")
+
+            op = int(input("Você passou por alugum desses? 1-sim 2-não: "))
+
+            if op != 1 and op != 2:
+                print("Numero inválido")
+                continue
+
+            if op == 1:
+                op = int(input("Você esperou o periodo de 6 meses? 1-sim 2-não: "))
+
+                if op != 1 and op != 2:
+                    print("Numero inválido")
+                    continue
+
+                if op == 1:
+                    print("PODE REALIZAR A DOAÇÃO")
+
+                else:
+                    print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
+
+                exit()
+
+            print("=" * 50)
+
+            print("USO DE PREP/PEP ORAL(APÓS A ÚLTIMA APLICAÇÃO)")
+
+            op = int(input("Você realizou esse procedimento? 1-sim 2-não: "))
+
+            if op != 1 and op != 2:
+                break
+
+            if op == 1:
+                op = int(input("Você esperou o periodo de 4 meses? 1-sim 2-não: "))
+
+                if op != 1 and op != 2:
+                    print("Numero inválido")
+                    continue
+
+                if op == 1:
+                    print("PODE REALIZAR A DOAÇÃO")
+
+                else:
+                    print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
+
+                exit()
+
+            print("=" * 50)
+
+
+        
+            print("-" * 10, "QUEM NÃO PODE DOAR SANGUE", "-" * 10)
+
+            print("- Você teve Hepatite após 11 anos de idade?")
+            op = int(input("1-sim 2-não\n"))
+
+            if op == 1:
+                print("NÃO PODE REALIZAR A DOAÇÃO!")
+                exit()
+
+            if op != 1 and op != 2:
+                print("OPÇÃO INVÁLIDA")
+                break
+
+            if op == 2:
+                print("-Você teve Doença de Chagas, Câncer, Sífilis?")
+                op = int(input("1-sim 2-não\n"))
+
+                if op != 1 and op != 2:
+                    print("OPÇÃO INVÁLIDA")
+                    break
+
+                if op == 1:
+                    print("NÃO PODE REALIZAR A DOAÇÃO!")
+                    exit()
+
+                if op == 2:
+                    print("- Você se relacionou com pessoas infectadas pelo HIV e seus parceiros?")
+                    op = int(input("1-sim 2-não\n"))
+
+                    if op != 1 and op != 2:
+                        print("OPÇÃO INVÁLIDA")
+                        break
+
+                    if op == 1:
+                        print("NÃO PODE REALIZAR A DOAÇÃO!")
+                        exit()
+
+                    if op == 2:
+                        print("- Você se relacionou com homens e mulheres com parceiro(a) eventual ou múltiplos parceiros sexuais?")
+                        op = int(input("1-sim 2-não\n"))
+
+                        if op != 1 and op != 2:
+                            print("OPÇÃO INVÁLIDA")
+
+                        if op == 1:
+                            print("NÃO PODE REALIZAR A DOAÇÃO!")
+                            exit()
+
+                    if op == 2:
+                        print("- Você compartilha seringas?")
+                        op = int(input("1-sim 2-não\n"))
+
+                        if op != 1 and op != 2:
+                            print("OPÇÃO INVÁLIDA")
+                            break
+
+                        if op == 1:
+                            print("NÃO PODE REALIZAR A DOAÇÃO!")
+                            exit()
+
+                        if op == 2:
+                            print("- Você faz uso de drogas injetáveis ilícitas?")
+                            op = int(input("1-sim 2-não\n"))
+
+                            if op != 1 and op != 2:
+                                print("OPÇÃO INVÁLIDA")
+                                break
+
+                            if op == 1:
+                                print("NÃO PODE REALIZAR A DOAÇÃO!")
+                                exit()
+
+                            elif op == 2:
+                                print("VOCÊ ESTÁ APTO PARA REALIZAR A DOAÇÃO")
+                                exit()
+
+    except ValueError:
+        print("NUMERO INVALIDO")
+
+   
+   
+    
 
 def menu():
     try:
@@ -300,11 +470,12 @@ def menu():
             print("2 - INSTRUÇÕES")
             print("3 - RESTRIÇÕES")
             print("4 - TEMPO DE ESPERA")
-            print("5 - SAIR")
+            print("5 - POSSO DOAR?")
+            print("6 - SAIR")
 
             op = int(input("Informe a sua opção: "))
 
-            if op < 1 or op > 5:
+            if op < 1 or op > 6:
                 print("OPÇÃO INVÁLIDA")
                 break
 
@@ -321,11 +492,15 @@ def menu():
                 espera()
 
             elif op == 5:
-                print("SAINDO...")
+                verificar_doaçao()
+            
+            elif op == 6:
+                print("SISTEMA ENCERRADO...")
                 exit()
+                
 
     except ValueError:
-        print("Dados inseridos incorretamente")
+       print("Dados inseridos incorretamente")
 
 
 menu()
