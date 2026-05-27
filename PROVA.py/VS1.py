@@ -11,7 +11,7 @@ def intrucoes():
 
             if op == 2:
                 print("NÃO PODE REALIZAR A DOAÇÃO!")
-                exit()
+                return(menu)
 
             if op == 1:
                 print("SEU PESO É ACIMA DE 51 KG?: ")
@@ -22,7 +22,7 @@ def intrucoes():
 
                 if op == 2:
                     print("NÃO PODE REALIZAR A DOAÇÃO!")
-                    exit()
+                    return(menu)
 
                 if op == 1:
                     print("VOCÊ ESTÁ GRIPADO OU COM OUTRAS INFECÇÕES?: ")
@@ -33,7 +33,7 @@ def intrucoes():
 
                     elif op == 1:
                         print("NÃO PODE REALIZAR A DOAÇÃO")
-                        exit()
+                        return(menu)
 
                     elif op == 2:
                         print("VOCÊ ESTÁ DESCANSADO E ALIMENTADO?: ")
@@ -44,7 +44,7 @@ def intrucoes():
 
                         if op == 2:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
-                            exit()
+                            return(menu)
 
                         if op == 1:
                             idade = int(input("INFORME A SUA IDADE: "))
@@ -54,28 +54,40 @@ def intrucoes():
 
                                 if menor_idade == 1:
                                     print("PODE REALIZAR A DOAÇÃO")
+                                    return(menu)
 
                                 elif menor_idade == 2:
                                     print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
+                                    return(menu)
 
                             elif idade < 16:
                                 print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
+                                return(menu)
 
                             elif idade >= 18 and idade <= 60:
                                 print("PODE REALIZAR A DOAÇÃO")
+                                return(menu)
 
-                            elif idade >= 61:
+                            elif idade >=69:
+                                    print("VOCÊ NÃO PODE DOAR,POIS O LIMITE É ENTRE 16 E 69 ANOS")
+                                    return(menu)
+
+
+                            elif idade >= 61 and idade <=68:
                                 print("É A SUA PRIMEIRA DOAÇÃO?")
                                 op = int(input("1-sim 2-não\n"))
 
                                 if op != 1 and op != 2:
                                     print("NUMERO INVÁLIDO")
 
+
                                 if op == 1:
                                     print("VOCÊ NÃO PODE, O LIMITE PARA A PRIMEIRA DOAÇÃO É DE 60 anos, 11 meses e 29 dias")
+                                    return(menu)
 
                                 else:
                                     print("PODE REALIZAR A DOAÇÃO")
+                                    return(menu)
 
     except ValueError:
         print("Dados inseridos de forma incorreta")
@@ -104,11 +116,11 @@ def espera():
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 elif op == 2:
                     print("VOCE NÃO PODE REALIZAR A DOAÇÃO")
-
-                exit()
+                    return(menu)
 
             print("=" * 50)
 
@@ -129,11 +141,11 @@ def espera():
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 else:
                     print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
-
-                exit()
+                    return(menu)
 
             print("=" * 50)
 
@@ -153,11 +165,13 @@ def espera():
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 else:
                     print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
-                exit()
+                
 
             print("=" * 50)
 
@@ -175,7 +189,7 @@ def restricoes():
 
             if op == 1:
                 print("NÃO PODE REALIZAR A DOAÇÃO!")
-                exit()
+                return(menu)
 
             if op != 1 and op != 2:
                 print("OPÇÃO INVÁLIDA")
@@ -191,7 +205,7 @@ def restricoes():
 
                 if op == 1:
                     print("NÃO PODE REALIZAR A DOAÇÃO!")
-                    exit()
+                    return(menu)
 
                 if op == 2:
                     print("- Você se relacionou com pessoas infectadas pelo HIV e seus parceiros?")
@@ -203,7 +217,7 @@ def restricoes():
 
                     if op == 1:
                         print("NÃO PODE REALIZAR A DOAÇÃO!")
-                        exit()
+                        return(menu)
 
                     if op == 2:
                         print("- Você se relacionou com homens e mulheres com parceiro(a) eventual ou múltiplos parceiros sexuais?")
@@ -214,7 +228,7 @@ def restricoes():
 
                         if op == 1:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
-                            exit()
+                            return(menu)
 
                     if op == 2:
                         print("- Você compartilha seringas?")
@@ -226,7 +240,7 @@ def restricoes():
 
                         if op == 1:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
-                            exit()
+                            return(menu)
 
                         if op == 2:
                             print("- Você faz uso de drogas injetáveis ilícitas?")
@@ -238,11 +252,11 @@ def restricoes():
 
                             if op == 1:
                                 print("NÃO PODE REALIZAR A DOAÇÃO!")
-                                exit()
+                                return(menu)
 
                             elif op == 2:
                                 print("VOCÊ ESTÁ APTO PARA REALIZAR A DOAÇÃO")
-                                exit()
+                                return(menu)
 
     except ValueError:
         print("NUMERO INVALIDO")
@@ -274,7 +288,7 @@ def recomendacoes():
                 
                 if dias == 1:
                    print("Pode realizar a doação".upper())
-                   exit()
+                   return(menu)
 
             elif genero == "M":
                 dias = int(input("É a sua primeria doação? 1-sim 2-não: ".upper()))
@@ -286,13 +300,13 @@ def recomendacoes():
                         break
                     if dias <60:
                         print("Você deve aguardar até 60 dias para doar novamente".upper())
-                        exit()
+                        return(menu)
                     elif dias >=60:
                         print("PODE REALIZAR A DOAÇÃO")
-                        exit()
+                        return(menu)
                 if dias == 1:
                     print("PODE REALIZAR A DOAÇÃO")
-                    exit()
+                    return(menu)
     except ValueError:
         print("DADOS INVÁLIDOS")
         exit()
@@ -320,9 +334,11 @@ def verificar_doaçao():
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 elif op == 2:
                     print("VOCE NÃO PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 exit()
 
@@ -345,12 +361,13 @@ def verificar_doaçao():
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 else:
                     print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
-                exit()
-
+               
             print("=" * 50)
 
             print("USO DE PREP/PEP ORAL(APÓS A ÚLTIMA APLICAÇÃO)")
@@ -369,11 +386,12 @@ def verificar_doaçao():
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
+                    return(menu)
 
                 else:
                     print("VOCÊ NÃO PODE REALIZAR A DOAÇÃO")
-
-                exit()
+                    return(menu)
+               
 
             print("=" * 50)
 
@@ -386,7 +404,7 @@ def verificar_doaçao():
 
             if op == 1:
                 print("NÃO PODE REALIZAR A DOAÇÃO!")
-                exit()
+                return(menu)
 
             if op != 1 and op != 2:
                 print("OPÇÃO INVÁLIDA")
@@ -402,7 +420,7 @@ def verificar_doaçao():
 
                 if op == 1:
                     print("NÃO PODE REALIZAR A DOAÇÃO!")
-                    exit()
+                    return(menu)
 
                 if op == 2:
                     print("- Você se relacionou com pessoas infectadas pelo HIV e seus parceiros?")
@@ -414,7 +432,7 @@ def verificar_doaçao():
 
                     if op == 1:
                         print("NÃO PODE REALIZAR A DOAÇÃO!")
-                        exit()
+                        return(menu)
 
                     if op == 2:
                         print("- Você se relacionou com homens e mulheres com parceiro(a) eventual ou múltiplos parceiros sexuais?")
@@ -425,8 +443,8 @@ def verificar_doaçao():
 
                         if op == 1:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
-                            exit()
-
+                            return(menu)
+                        
                     if op == 2:
                         print("- Você compartilha seringas?")
                         op = int(input("1-sim 2-não\n"))
@@ -437,7 +455,7 @@ def verificar_doaçao():
 
                         if op == 1:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
-                            exit()
+                            return(menu)
 
                         if op == 2:
                             print("- Você faz uso de drogas injetáveis ilícitas?")
@@ -449,11 +467,11 @@ def verificar_doaçao():
 
                             if op == 1:
                                 print("NÃO PODE REALIZAR A DOAÇÃO!")
-                                exit()
+                                return(menu)
 
                             elif op == 2:
                                 print("VOCÊ ESTÁ APTO PARA REALIZAR A DOAÇÃO")
-                                exit()
+                                return(menu)
 
     except ValueError:
         print("NUMERO INVALIDO")
