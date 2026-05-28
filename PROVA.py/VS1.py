@@ -105,7 +105,7 @@ def espera():
 
             if op != 1 and op != 2:
                 print("NUMERO INVÁLIDO")
-                break
+              
 
             if op == 1:
                 op = int(input("Você esperou o periodo de 1 ano? 1-sim 2-não: "))
@@ -130,14 +130,14 @@ def espera():
 
             if op != 1 and op != 2:
                 print("Numero inválido")
-                continue
+                
 
             if op == 1:
                 op = int(input("Você esperou o periodo de 6 meses? 1-sim 2-não: "))
 
                 if op != 1 and op != 2:
                     print("Numero inválido")
-                    continue
+                    
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
@@ -161,7 +161,7 @@ def espera():
 
                 if op != 1 and op != 2:
                     print("Numero inválido")
-                    continue
+                    
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
@@ -193,7 +193,7 @@ def restricoes():
 
             if op != 1 and op != 2:
                 print("OPÇÃO INVÁLIDA")
-                break
+                
 
             if op == 2:
                 print("-Você teve Doença de Chagas, Câncer, Sífilis?")
@@ -201,7 +201,7 @@ def restricoes():
 
                 if op != 1 and op != 2:
                     print("OPÇÃO INVÁLIDA")
-                    break
+                    
 
                 if op == 1:
                     print("NÃO PODE REALIZAR A DOAÇÃO!")
@@ -213,7 +213,7 @@ def restricoes():
 
                     if op != 1 and op != 2:
                         print("OPÇÃO INVÁLIDA")
-                        break
+                        
 
                     if op == 1:
                         print("NÃO PODE REALIZAR A DOAÇÃO!")
@@ -236,7 +236,7 @@ def restricoes():
 
                         if op != 1 and op != 2:
                             print("OPÇÃO INVÁLIDA")
-                            break
+                          
 
                         if op == 1:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
@@ -248,8 +248,7 @@ def restricoes():
 
                             if op != 1 and op != 2:
                                 print("OPÇÃO INVÁLIDA")
-                                break
-
+                               
                             if op == 1:
                                 print("NÃO PODE REALIZAR A DOAÇÃO!")
                                 return(menu)
@@ -269,7 +268,7 @@ def recomendacoes():
 
             if genero != "F" and genero != "M":
                 print("Dados inválidos")
-                continue
+                
 
             if genero == "F":
                 dias = int(input("É a sua primeria doação? 1-sim 2-não: ".upper()))
@@ -278,13 +277,13 @@ def recomendacoes():
                     dias = int(input("Escreva há quantos dias você fez sua última doação: ".upper()))
                     if dias < 0:
                         print("Dados incorretos!".upper())
-                        break
+                        
                     if dias <= 90:
                         print("Você deve aguardar até 90 dias para doar novamente".upper())
-                        exit()
+                        return(menu)
                     elif dias > 90:
                         print("PODE REALIZAR A DOAÇÃO")
-                        exit()
+                        return(menu)
                 
                 if dias == 1:
                    print("Pode realizar a doação".upper())
@@ -297,7 +296,7 @@ def recomendacoes():
                     dias = int(input("Escreva há quantos dias você fez sua última doação: ".upper()))
                     if dias < 0:
                         print("Dados incorretos!".upper())
-                        break
+                        
                     if dias <60:
                         print("Você deve aguardar até 60 dias para doar novamente".upper())
                         return(menu)
@@ -323,14 +322,14 @@ def verificar_doaçao():
 
             if op != 1 and op != 2:
                 print("NUMERO INVÁLIDO")
-                break
+                
 
             if op == 1:
                 op = int(input("Você esperou o periodo de 1 ano? 1-sim 2-não: "))
 
                 if op != 1 and op != 2:
                     print("NUMERO INVÁLIDO")
-                    continue
+                    
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
@@ -350,14 +349,13 @@ def verificar_doaçao():
 
             if op != 1 and op != 2:
                 print("Numero inválido")
-                continue
+                
 
             if op == 1:
                 op = int(input("Você esperou o periodo de 6 meses? 1-sim 2-não: "))
 
                 if op != 1 and op != 2:
                     print("Numero inválido")
-                    continue
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
@@ -382,7 +380,6 @@ def verificar_doaçao():
 
                 if op != 1 and op != 2:
                     print("Numero inválido")
-                    continue
 
                 if op == 1:
                     print("PODE REALIZAR A DOAÇÃO")
@@ -408,7 +405,7 @@ def verificar_doaçao():
 
             if op != 1 and op != 2:
                 print("OPÇÃO INVÁLIDA")
-                break
+                
 
             if op == 2:
                 print("-Você teve Doença de Chagas, Câncer, Sífilis?")
@@ -416,7 +413,7 @@ def verificar_doaçao():
 
                 if op != 1 and op != 2:
                     print("OPÇÃO INVÁLIDA")
-                    break
+                    
 
                 if op == 1:
                     print("NÃO PODE REALIZAR A DOAÇÃO!")
@@ -428,7 +425,7 @@ def verificar_doaçao():
 
                     if op != 1 and op != 2:
                         print("OPÇÃO INVÁLIDA")
-                        break
+                        
 
                     if op == 1:
                         print("NÃO PODE REALIZAR A DOAÇÃO!")
@@ -451,7 +448,7 @@ def verificar_doaçao():
 
                         if op != 1 and op != 2:
                             print("OPÇÃO INVÁLIDA")
-                            break
+                            
 
                         if op == 1:
                             print("NÃO PODE REALIZAR A DOAÇÃO!")
@@ -463,7 +460,7 @@ def verificar_doaçao():
 
                             if op != 1 and op != 2:
                                 print("OPÇÃO INVÁLIDA")
-                                break
+                               
 
                             if op == 1:
                                 print("NÃO PODE REALIZAR A DOAÇÃO!")
